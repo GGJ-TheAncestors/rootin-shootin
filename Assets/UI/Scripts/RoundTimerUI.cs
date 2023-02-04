@@ -10,5 +10,16 @@ public class RoundTimerUI : MonoBehaviour
     [SerializeField] Slider timerSlider;
     [SerializeField] TimeLoopController timeLoopController;
 
+    private float timerMax = 1f;
 
+    private void OnEnable()
+    {
+        timerMax = timeLoopController.RoundTimeUI;
+    }
+
+    private void Update()
+    {
+        timerSlider.value = timeLoopController.RoundTimeUI / timerMax;
+        timerText.text = "" + timeLoopController.RoundTimeUI;
+    }
 }
