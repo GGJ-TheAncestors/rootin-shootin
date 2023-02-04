@@ -7,9 +7,11 @@ public class CameraControl : MonoBehaviour
     public float m_MinSize = 6.5f;                  
     /*[HideInInspector]*/ public Transform[] m_Targets; 
 
+    public Vector3 offset;
+
 
     private Camera m_Camera;                        
-    private float m_ZoomSpeed;                      
+    private Vector3 m_ZoomSpeed;                      
     private Vector3 m_MoveVelocity;                 
     private Vector3 m_DesiredPosition;              
 
@@ -52,16 +54,15 @@ public class CameraControl : MonoBehaviour
         if (numTargets > 0)
             averagePos /= numTargets;
 
-        averagePos.y = transform.position.y;
-
-        m_DesiredPosition = averagePos;
+        m_DesiredPosition = averagePos + offset;
     }
 
 
     private void Zoom()
     {
-        float requiredSize = FindRequiredSize();
-        m_Camera.orthographicSize = Mathf.SmoothDamp(m_Camera.orthographicSize, requiredSize, ref m_ZoomSpeed, m_DampTime);
+        float requiredSize = FindRequiredSize();        
+        float distance = requiredSize * 0.5f / Mathf.Tan(m_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        offset = Vector3.SmoothDamp( offset, offset.normalized * distance, ref m_ZoomSpeed, m_DampTime );
     }
 
 
