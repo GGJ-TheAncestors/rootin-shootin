@@ -43,6 +43,6 @@ public class Dig : MonoBehaviour
         }
 
         ActionResurface();
-        return false;
+        return true;
     }
 }
