@@ -12,8 +12,12 @@ public class ReferenceList : ScriptableObject
 
     public void Clear()
     {
-        OnAdded.RemoveAllListeners();
         objects = new List<GameObject>();
+    }
+
+    public void ClearEvent()
+    {
+        OnAdded.RemoveAllListeners();
     }
 
     public void Add( GameObject obj )
