@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
     // Manages scores for each player over all 4 rounds.
     // Supplies methods to add points to players.
+    // TODO: Probably should add the player ReferenceList here.
     [SerializeField]
     private List<int> playerScores = new List<int> { 0, 0, 0, 0 };
 
