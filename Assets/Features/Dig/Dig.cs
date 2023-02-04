@@ -13,6 +13,8 @@ public class Dig : MonoBehaviour
     [SerializeField]
     private float CurrentCooldownTime;
 
+    private bool isDigging;
+
     void Update()
     {
         CurrentCooldownTime -= Time.deltaTime;
@@ -28,6 +30,7 @@ public class Dig : MonoBehaviour
 
     public void ActionDig()
     {
+        isDigging = true;
         animator.SetBool( "Action_Dig", true );
     }
 
@@ -41,6 +44,9 @@ public class Dig : MonoBehaviour
             ActionDig();
             return true;
         }
+        
+        if( isDigging == false )
+            return false;
 
         ActionResurface();
         return true;
