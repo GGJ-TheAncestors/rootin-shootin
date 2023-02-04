@@ -4,26 +4,28 @@ using UnityEngine.InputSystem;
 public class HandleInput : MonoBehaviour
 {
     private Movement movement;
+    private ProjectileShooter shooter;
 
     void Start()
     {
-        enabled = TryGetComponent<Movement>( out movement );
+        TryGetComponent<Movement>( out movement );
+        TryGetComponent<ProjectileShooter>( out shooter );
     }
 
     public void OnMove(InputValue value)
     {
         Vector2 direction = value.Get<Vector2>();
-        movement.SetTargetVelocity( direction );
+        movement?.SetTargetVelocity( direction );
     }
 
     public void OnShoot( InputValue value )
     {
-
+        shooter?.Fire();
     }
 
     public void OnDig( InputValue value )
     {
 
     }
-    
+
 }
