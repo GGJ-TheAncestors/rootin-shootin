@@ -28,6 +28,12 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void DoHeal(float heal)
+    {
+        currentHealth += heal;
+        currentHealth = Mathf.Min( startHealth, currentHealth );
+    }
+
     public void Die()
     {
         gameObject.SetActive(false);

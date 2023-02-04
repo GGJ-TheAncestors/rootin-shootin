@@ -12,19 +12,31 @@ public class Dig : MonoBehaviour
     private float CooldownTime;
     [SerializeField]
     private float CurrentCooldownTime;
-
     private bool isDigging;
+    
+    [Header("Healing")]
+    [SerializeField]
+    private Health health;
+    [SerializeField]
+    private float HealingAmount;
+
+    void OnValidate()
+    {
+        health = GetComponent<Health>();
+    }
 
     void Update()
     {
         CurrentCooldownTime -= Time.deltaTime;
         CurrentCooldownTime = Mathf.Max( 0, CurrentCooldownTime );
+        
+        if( isDigging )
+            health.DoHeal( HealingAmount );
     }
 
     public void ActionResurface()
     {
         animator.SetBool( "Action_Dig", false );
-
         CurrentCooldownTime = CooldownTime;
     }
 
