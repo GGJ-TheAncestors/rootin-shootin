@@ -669,6 +669,19 @@ MonoBehaviour:
   - {fileID: 3141945774874780054}
   - {fileID: 3141945776002012353}
   controllers: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
+  controllerAddedSound: {fileID: 8300000, guid: a22a1a02f78f2164aa5a37ccb699070a,
+    type: 3}
+  startGameSound: {fileID: 8300000, guid: 83221d6c868a7654ca0035095d950a98, type: 3}
+  mainSceneName: MainScene
+  startAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &3141945774987053754
 GameObject:
   m_ObjectHideFlags: 0
