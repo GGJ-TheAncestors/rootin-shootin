@@ -17,4 +17,9 @@ public class PlayerInfoPanel : MonoBehaviour
     {
         player = playerHealth;
     }
+
+    public void SetScore(int score)
+    {
+        scoreText.text = "" + score;
+    }
 }

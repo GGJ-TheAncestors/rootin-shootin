@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class RoleManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class RoleManager : MonoBehaviour
         Onion = 3,
     }
 
+    public Action OnRolesInitialized;
+
     public void InitializeRoles()
     {
         PlayerRoles = new List<Characters>();
@@ -25,6 +28,8 @@ public class RoleManager : MonoBehaviour
         {
             PlayerRoles.Add(AllAvailableCharacters[i]);
         }
+
+        OnRolesInitialized?.Invoke();
     }
  
     public void RotateCharacters()
