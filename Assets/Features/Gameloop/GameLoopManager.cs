@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameLoopManager : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class GameLoopManager : MonoBehaviour
     [SerializeField] private RoleManager Roles;
     [SerializeField] private CharacterManager Characters;
     [SerializeField] private ReferenceList Players;
+
+    public TimeLoopController GetTimeLoopController() => TimeLoop;
+    public ScoreManager GetScoreManager() => Scores;
+    public RoleManager GetRoleManager() => Roles;
+    public CharacterManager GetCharacters() => Characters;
+    public ReferenceList GetPlayers() => Players;
+
+    public Action OnGameComplete;
 
     // ScoreManager;
     // RoleManager;
@@ -72,6 +81,7 @@ public class GameLoopManager : MonoBehaviour
     public void GameComplete()
     {
         Debug.Log("Game Complete!");
+        OnGameComplete?.Invoke();
         // TODO: Show scores, Give option to restart or go back to main menu?
     }
 
