@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ProjectileShooter : MonoBehaviour
 {
+    public Side side;
+
     [SerializeField] Projectile projectile;
+
 
 
     private void Update()
@@ -17,6 +20,7 @@ public class ProjectileShooter : MonoBehaviour
 
     public void Fire()
     {
-        Instantiate(projectile, transform.position, transform.localRotation, null);
+        var newProjectile = Instantiate(projectile, transform.position, transform.rotation, null);
+        newProjectile.side = side;
     }
 }

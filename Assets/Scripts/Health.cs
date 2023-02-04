@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum Side { Player1 = 100, Player2 = 200, Player3 = 300, Player4 = 400}
+
 public class Health : MonoBehaviour
 {
     public float startHealth = 100f;
+    public Side side;
 
     private float currentHealth;
 

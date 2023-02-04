@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public float damage = 10f;
     public float speed = 10f;
     public float lifeTime = 5f;
+    public Side side;
 
     private void Start()
     {
@@ -23,5 +25,20 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
 
         //spawn destroy effect...
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var otherHealth = other.GetComponent<Health>();
+
+        if(otherHealth)
+        {
+            if(side != otherHealth.side)
+            {
+                otherHealth.TakeDamage(damage);
+                DestroySelf();
+
+            }
+        }
     }
 }
