@@ -1,26 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class RoleManager : MonoBehaviour
 {
-    public int CurrentFarmerID { get; private set; } = 0;
-    public int PlayerCount = 4; // TODO: Player manager? Player pool? Find out how many players there actually are.
+    readonly List<Characters> AllAvailableCharacters = new() { Characters.Farmer, Characters.Carrot, Characters.Beet, Characters.Onion };
 
-    // Switch to the next farmer.
-    public void NextFarmer()
+    public int CurrentFarmerID { get; private set; } = 0;
+    public List<Characters> PlayerRoles;
+    public ReferenceList Players;
+    public enum Characters
     {
-        // Increment current farmer.
-        CurrentFarmerID = CurrentFarmerID == 4 ? 0 : CurrentFarmerID + 1;
+        Farmer = 0,
+        Carrot = 1,
+        Beet = 2,
+        Onion = 3,
+    }
+
+    public void InitializeRoles()
+    {
+        PlayerRoles = new List<Characters>();
+        for (int i = 0; i < Players.objects.Count; i++)
+        {
+            PlayerRoles.Add(AllAvailableCharacters[i]);
+        }
+    }
+ 
+    public void RotateCharacters()
+    {
+        // The roles loop around to the next player.
+        Characters lastRole = PlayerRoles[PlayerRoles.Count - 1];
+        PlayerRoles.Insert(0, lastRole);
+        PlayerRoles.RemoveAt(PlayerRoles.Count - 1);
+
+
+        CurrentFarmerID = CurrentFarmerID == Players.objects.Count ? 0 : CurrentFarmerID + 1;
     }
 
     public bool IsFarmer(int playerID)
     {
-        return playerID == CurrentFarmerID;
+        return PlayerRoles.ElementAt(playerID) == Characters.Farmer;
     }
 
-    public void Reset()
+    public Characters GetRole(int playerID)
     {
-        CurrentFarmerID = 0;
+        return PlayerRoles.ElementAt(playerID);
     }
 }
