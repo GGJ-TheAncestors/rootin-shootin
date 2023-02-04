@@ -6,10 +6,12 @@ public class GameLoopManager : MonoBehaviour
 {
     // Starts a round by informing the timeloop controller, as well as the score manager & role manager.
     // 
-    public TimeLoopController TimeLoop;
-    public ScoreManager Scores;
-    public RoleManager Roles;
-    public int PlayerCount = 4; // TODO: temp var
+    [SerializeField] private TimeLoopController TimeLoop;
+    [SerializeField] private ScoreManager Scores;
+    [SerializeField] private RoleManager Roles;
+    [SerializeField] private CharacterManager Characters;
+    [SerializeField] private ReferenceList Players;
+
     // ScoreManager;
     // RoleManager;
     private int CurrentRound = 1;
@@ -20,15 +22,17 @@ public class GameLoopManager : MonoBehaviour
         TimeLoop = GetComponentInChildren<TimeLoopController>();
         Scores = GetComponentInChildren<ScoreManager>();
         Roles = GetComponentInChildren<RoleManager>();
-
+        Characters = GetComponentInChildren<CharacterManager>();
         TimeLoop.RoundEnd = RoundEnd;
         StartGame();
     }
 
     void RoundEnd()
     {
+        Debug.Log("Player 1 role was: " + Roles.PlayerRoles[0].ToString());
+
         // TODO: Compare to the actual playercount.
-        if (CurrentRound == PlayerCount)
+        if (CurrentRound == Players.objects.Count)
         {
             GameComplete();
         }
@@ -37,10 +41,13 @@ public class GameLoopManager : MonoBehaviour
             NextRound();
         }
     }
+
     void StartGame()
     {
         // TODO: If any logic is needed before the first round starts, insert here!!
         Debug.Log("Round " + CurrentRound.ToString() + "!");
+        Roles.InitializeRoles();
+        Characters.InstantiateCharacters();
         TimeLoop.StartTimers();
     }
 
@@ -49,9 +56,16 @@ public class GameLoopManager : MonoBehaviour
         // Add the remaining time as your score!
         // TODO: Discuss with team.
         Scores.AddScore(TimeLoop.RoundTimeUI, Roles.CurrentFarmerID);
+
+        // Assign new roles to players, then clear existing player gameobjects and reinstantiate them.
+        //
+        Roles.RotateCharacters();
+        Characters.ClearCharacters();
+        Characters.InstantiateCharacters();
+        
+        // Start the next round!
         TimeLoop.ResetTimers();
         TimeLoop.StartTimers();
-        Roles.NextFarmer();
         CurrentRound++;
     }
 
@@ -65,6 +79,6 @@ public class GameLoopManager : MonoBehaviour
     {
         TimeLoop.ResetTimers();
         Scores.ResetScores();
-        Roles.Reset();
+        Roles.InitializeRoles();
     }
 }

@@ -44,7 +44,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce4efb47939b1b47bf133d5304bf2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCount: 4
+  PlayerRoles: 
+  Players: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
+--- !u!1 &1267422927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267422928}
+  - component: {fileID: 1267422929}
+  m_Layer: 0
+  m_Name: CharacterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1267422928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267422927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3023569379681618119}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1267422929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267422927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2717d28b2cbbf5f40bec55f5f5969228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterPrefabs:
+  - {fileID: 8519866137217065697, guid: 0ff5cf3ddbc737940ae164a5bcf8967f, type: 3}
+  - {fileID: 781536561829405006, guid: 603c8aecca8f16b43a13e9bb4c12fc89, type: 3}
+  - {fileID: 781536561829405006, guid: 603c8aecca8f16b43a13e9bb4c12fc89, type: 3}
+  - {fileID: 781536561829405006, guid: 603c8aecca8f16b43a13e9bb4c12fc89, type: 3}
+  PlayerCharacters: []
+  SpawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Roles: {fileID: 540645815}
+  Players: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
 --- !u!1 &3023569379113917603
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players: 2
-  RoundDuration: 60
+  RoundDuration: 1
 --- !u!1 &3023569379179906077
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +226,7 @@ Transform:
   - {fileID: 3023569379113917601}
   - {fileID: 3023569379179906076}
   - {fileID: 540645814}
+  - {fileID: 1267422928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,4 +245,5 @@ MonoBehaviour:
   TimeLoop: {fileID: 3023569379113917602}
   Scores: {fileID: 3023569379179906083}
   Roles: {fileID: 540645815}
-  PlayerCount: 4
+  Characters: {fileID: 0}
+  Players: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
