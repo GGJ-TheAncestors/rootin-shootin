@@ -9,6 +9,7 @@ public class HandleInput : MonoBehaviour
     private Movement movement;
     private ProjectileShooter shooter;
     private Dig dig;
+    private Grab grab;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class HandleInput : MonoBehaviour
         movement = pawn.GetComponentInChildren<Movement>();
         shooter = pawn.GetComponentInChildren<ProjectileShooter>();
         dig = pawn.GetComponentInChildren<Dig>();
+        grab = pawn.GetComponentInChildren<Grab>();
     }
 
     public void OnMove(InputValue value)
@@ -39,6 +41,11 @@ public class HandleInput : MonoBehaviour
         float state = value.Get<float>();
         if( dig?.PerformAction( state ) == true )
             movement.SetAccelaration( 1 - state );
+    }
+
+    public void OnGrab()
+    {
+        grab.CheckGrab();
     }
 
 }
