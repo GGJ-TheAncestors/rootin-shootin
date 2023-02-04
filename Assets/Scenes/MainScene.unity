@@ -342,16 +342,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: _InputManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2243609769204108383, guid: 59a15051b79e8d048a133fc346ea54af,
-        type: 3}
-      propertyPath: m_JoinBehavior
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2243609769204108383, guid: 59a15051b79e8d048a133fc346ea54af,
-        type: 3}
-      propertyPath: m_JoinAction.m_UseReference
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59a15051b79e8d048a133fc346ea54af, type: 3}
 --- !u!1 &2026007110
