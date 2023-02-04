@@ -82,7 +82,17 @@ public class CameraControl : MonoBehaviour
 
         float size = 0f;
 
-        for (int i = 0; i < m_Targets.Length; i++)
+        List<Transform> m_Targets = new List<Transform>(this.m_Targets.Length);
+        for( int i = 0; i < controllers.objects.Count; ++i )
+        {
+            if( controllers.objects[i].TryGetComponent<HandleInput>( out HandleInput input ) )
+            {
+                if( input.pawn != null )
+                    m_Targets.Add( input.pawn.transform );
+            }
+        } 
+
+        for (int i = 0; i < m_Targets.Count; i++)
         {
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;
