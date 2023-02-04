@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class HandleInput : MonoBehaviour
 {
+    public GameObject pawn;
+
     [SerializeField]
     private bool possesSelfOnStart = true;
 
@@ -13,16 +15,25 @@ public class HandleInput : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad( this.gameObject );
+
         if( possesSelfOnStart )
             Posses( gameObject );
     }
 
-    public void Posses( GameObject pawn )
+    [ContextMenu("Posses Current")]
+    public void Posses()
     {
         movement = pawn.GetComponentInChildren<Movement>();
         shooter = pawn.GetComponentInChildren<ProjectileShooter>();
         dig = pawn.GetComponentInChildren<Dig>();
         grab = pawn.GetComponentInChildren<Grab>();
+    }
+
+    public void Posses( GameObject pawn )
+    {
+        this.pawn = pawn;
+        Posses();
     }
 
     public void OnMove(InputValue value)

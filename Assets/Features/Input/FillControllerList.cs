@@ -15,7 +15,8 @@ public class FillControllerList : MonoBehaviour
 
     void OnDestroy()
     {
-        Start();
+        list.Clear();
+        list.ClearEvent();
     }
 
 

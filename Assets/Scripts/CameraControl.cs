@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
@@ -6,10 +7,9 @@ public class CameraControl : MonoBehaviour
     public float m_ScreenEdgeBuffer = 4f;           
     public float m_MinSize = 6.5f;                  
     /*[HideInInspector]*/ public Transform[] m_Targets; 
+    public ReferenceList controllers;
 
     public Vector3 offset;
-
-
     private Camera m_Camera;                        
     private Vector3 m_ZoomSpeed;                      
     private Vector3 m_MoveVelocity;                 
@@ -42,7 +42,17 @@ public class CameraControl : MonoBehaviour
         Vector3 averagePos = new Vector3();
         int numTargets = 0;
 
-        for (int i = 0; i < m_Targets.Length; i++)
+        List<Transform> m_Targets = new List<Transform>(this.m_Targets.Length);
+        for( int i = 0; i < controllers.objects.Count; ++i )
+        {
+            if( controllers.objects[i].TryGetComponent<HandleInput>( out HandleInput input ) )
+            {
+                if( input.pawn != null )
+                    m_Targets.Add( input.pawn.transform );
+            }
+        } 
+
+        for (int i = 0; i < m_Targets.Count; i++)
         {
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;

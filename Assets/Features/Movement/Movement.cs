@@ -46,6 +46,10 @@ public class Movement : MonoBehaviour
 
     private void UpdateVelocity()
     {
+        Vector3 forward = new Vector3(targetVelocity.x, 0, targetVelocity.y).normalized;
+        if( forward.sqrMagnitude > 0 )
+            transform.forward = forward;
+
         body.velocity = new Vector3(currentVelocity.x, body.velocity.y, currentVelocity.y);
     }
 
@@ -68,6 +72,6 @@ public class Movement : MonoBehaviour
 
     public void Break()
     {
-        currentVelocity *= 0.5f;
+        currentVelocity *= 0.0f;
     }
 }

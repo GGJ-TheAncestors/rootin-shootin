@@ -10,11 +10,18 @@ public class Throw : MonoBehaviour
 
     public Animator anim;
     public Rigidbody body;
+    public Movement movement;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
-        body = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
+        body = GetComponentInChildren<Rigidbody>();
+        movement = GetComponentInChildren<Movement>();
+    }
+
+    void OnValidate()
+    {
+        Start();
     }
 
     void Update()
@@ -26,16 +33,18 @@ public class Throw : MonoBehaviour
             body.useGravity = false;
             body.position = new Vector3( body.position.x, 0, body.position.z );
             enabled = false;
+            movement.enabled = true;
         }
     }
     
     public void GO()
     {
-        anim.SetBool("action_dig", false );
+        anim.SetBool("Action_Dig", false );
         float up = Mathf.Sqrt( -2*Physics.gravity.y * throwHeight );
         time = Mathf.Sqrt( -(2*throwHeight/Physics.gravity.y) ) + Mathf.Sqrt( 2*throwHeight/Physics.gravity.y );
         body.velocity = new Vector3( body.velocity.x, up, body.velocity.z );
         body.useGravity = true;
         enabled = true;
+        movement.enabled = false;
     }
 }
