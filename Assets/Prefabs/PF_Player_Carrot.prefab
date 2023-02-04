@@ -1241,6 +1241,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3334721728080030530, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
         type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1784671458285643319}
+    - target: {fileID: 3334721728080030530, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
+        type: 3}
+      propertyPath: stunTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334721728080030530, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1280,7 +1290,7 @@ MonoBehaviour:
   CooldownTime: 4
   CurrentCooldownTime: 0
   health: {fileID: 781536561829405007}
-  HealingAmount: 0
+  HealingAmount: 5
 --- !u!114 &781536561829405007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1394656335638441560, guid: 8faca9ddff5b32742a1e364bf7ab3c04,

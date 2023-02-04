@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
     public float throwHeight;
+    public float stunTime;
     public float time;
 
     public Animator anim;
@@ -33,18 +31,26 @@ public class Throw : MonoBehaviour
             body.useGravity = false;
             body.position = new Vector3( body.position.x, 0, body.position.z );
             enabled = false;
-            movement.enabled = true;
+            body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
+
+        if( time <= -stunTime )
+            movement.enabled = true;
     }
     
     public void GO()
     {
+        body.constraints = RigidbodyConstraints.FreezeRotation;
+        
+        enabled = true;
         anim.SetBool("Action_Dig", false );
+        
         float up = Mathf.Sqrt( -2*Physics.gravity.y * throwHeight );
-        time = Mathf.Sqrt( -(2*throwHeight/Physics.gravity.y) ) + Mathf.Sqrt( 2*throwHeight/Physics.gravity.y );
+        time = Mathf.Sqrt( -(2*throwHeight/Physics.gravity.y) ) + Mathf.Sqrt( -(2*throwHeight/Physics.gravity.y) );
+        
         body.velocity = new Vector3( body.velocity.x, up, body.velocity.z );
         body.useGravity = true;
-        enabled = true;
+        
         movement.enabled = false;
     }
 }
