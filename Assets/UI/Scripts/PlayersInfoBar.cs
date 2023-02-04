@@ -7,6 +7,7 @@ public class PlayersInfoBar : MonoBehaviour
 {
     [SerializeField] PlayerInfoPanel playerInfoPanelPrefab;
     [SerializeField] RoleManager roleManager;
+    [SerializeField] ScoreManager scoreManager;
 
 
     private List<PlayerInfoPanel> playerInfoPanels = new List<PlayerInfoPanel>();
@@ -14,6 +15,12 @@ public class PlayersInfoBar : MonoBehaviour
     private void OnEnable()
     {
         roleManager.OnRolesInitialized += HandleRolesInitialized;
+        scoreManager.ScoreAction += HandleScoreUpdate;
+    }
+
+    private void OnDisable()
+    {
+        roleManager.OnRolesInitialized -= HandleRolesInitialized;
     }
 
 
@@ -37,5 +44,10 @@ public class PlayersInfoBar : MonoBehaviour
         {
             AddPlayer();
         }
+    }
+
+    void HandleScoreUpdate(int score, int playerId)
+    {
+        playerInfoPanels[playerId].SetScore(score);
     }
 }

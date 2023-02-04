@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08d3e888da78d84189e2819ae09d858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Players: 2
   RoundDuration: 1
 --- !u!1 &3023569379179906077
 GameObject:
@@ -245,5 +244,5 @@ MonoBehaviour:
   TimeLoop: {fileID: 3023569379113917602}
   Scores: {fileID: 3023569379179906083}
   Roles: {fileID: 540645815}
-  Characters: {fileID: 0}
+  Characters: {fileID: 1267422929}
   Players: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
