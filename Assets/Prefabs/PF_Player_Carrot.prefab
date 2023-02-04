@@ -1242,7 +1242,7 @@ PrefabInstance:
     - target: {fileID: 3334721728080030530, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8074378863275059883, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
         type: 3}
@@ -1279,6 +1279,20 @@ MonoBehaviour:
   animator: {fileID: 1784671458285643319}
   CooldownTime: 4
   CurrentCooldownTime: 0
+  health: {fileID: 781536561829405007}
+  HealingAmount: 0
+--- !u!114 &781536561829405007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1394656335638441560, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1838106162707844887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781536561829405006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ede654e08f48ce46b8d8c31070a42b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1676809393967318809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1064954606743554062, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
