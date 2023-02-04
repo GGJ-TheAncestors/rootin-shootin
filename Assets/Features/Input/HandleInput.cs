@@ -44,7 +44,7 @@ public class HandleInput : MonoBehaviour
 
     public void OnShoot( InputValue value )
     {
-        shooter?.Fire();
+        shooter?.TryFire();
     }
 
     public void OnDig( InputValue value )
