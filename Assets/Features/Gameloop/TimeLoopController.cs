@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TimeLoopController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class TimeLoopController : MonoBehaviour
     private float CountDownTime = 3; // Time to count down from
     public int CountDownTimeUI { get; private set; } = 3;
 
+    public Action RoundEnd;
+
     // Update is called once per frame
     void Update()
     {
@@ -36,6 +39,7 @@ public class TimeLoopController : MonoBehaviour
             {
                 RoundActive = false;
                 Debug.Log("Round ended!");
+                RoundEnd?.Invoke();
             }
         }
 
@@ -67,6 +71,9 @@ public class TimeLoopController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops and restarts the timers.
+    /// </summary>
     public void RestartTimers()
     {
         // Start the countdown to the first round.
@@ -82,6 +89,9 @@ public class TimeLoopController : MonoBehaviour
         Debug.Log("3...");
     }
 
+    /// <summary>
+    /// Restarts the timers and activates a countdown.
+    /// </summary>
     public void StartTimers()
     {
         RestartTimers();

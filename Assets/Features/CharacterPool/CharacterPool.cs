@@ -26,7 +26,7 @@ public class CharacterPool : ScriptableObject
             GameObject pawn = Instantiate( prefab );
             pawn.SetActive( false );
             return pawn;
-        }   
+        }
 
         farmer = Spawn( farmerPrefab );
         SpawnedPawns.Add( farmer ); 
