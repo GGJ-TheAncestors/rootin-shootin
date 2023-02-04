@@ -358,16 +358,6 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1723455120634241244, guid: 4221def103ad78e48b3c603a1a65f0af,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723455120634241244, guid: 4221def103ad78e48b3c603a1a65f0af,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7138848330304498163, guid: 4221def103ad78e48b3c603a1a65f0af,
         type: 3}
       propertyPath: m_Pivot.x

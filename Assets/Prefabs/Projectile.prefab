@@ -133,6 +133,7 @@ MonoBehaviour:
   speed: 10
   lifeTime: 5
   side: 200
+  hitFX: {fileID: 7623609434552916608, guid: df13d206dd270b549a1334d099dd15d9, type: 3}
 --- !u!65 &86883187
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public float lifeTime = 5f;
     public Side side;
 
+    [SerializeField] FXObject hitFX;
+
     private void Start()
     {
         Invoke("DestroySelf", lifeTime);
@@ -23,8 +25,10 @@ public class Projectile : MonoBehaviour
     void DestroySelf()
     {
         Destroy(gameObject);
-
-        //spawn destroy effect...
+        if(hitFX)
+        {
+            Instantiate(hitFX, transform.position, Quaternion.identity);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
