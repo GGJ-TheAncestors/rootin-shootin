@@ -3,15 +3,24 @@ using UnityEngine.InputSystem;
 
 public class HandleInput : MonoBehaviour
 {
+    [SerializeField]
+    private bool possesSelfOnStart = true;
+
     private Movement movement;
     private ProjectileShooter shooter;
     private Dig dig;
 
     void Start()
     {
-        TryGetComponent<Movement>( out movement );
-        shooter = GetComponentInChildren<ProjectileShooter>();
-        dig = GetComponentInChildren<Dig>();
+        if( possesSelfOnStart )
+            Posses( gameObject );
+    }
+
+    public void Posses( GameObject pawn )
+    {
+        movement = pawn.GetComponentInChildren<Movement>();
+        shooter = pawn.GetComponentInChildren<ProjectileShooter>();
+        dig = pawn.GetComponentInChildren<Dig>();
     }
 
     public void OnMove(InputValue value)
