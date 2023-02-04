@@ -3,15 +3,26 @@ using UnityEngine.InputSystem;
 
 public class HandleInput : MonoBehaviour
 {
+    [SerializeField]
+    private bool possesSelfOnStart = true;
+
     private Movement movement;
     private ProjectileShooter shooter;
     private Dig dig;
+    private Grab grab;
 
     void Start()
     {
-        TryGetComponent<Movement>( out movement );
-        shooter = GetComponentInChildren<ProjectileShooter>();
-        dig = GetComponentInChildren<Dig>();
+        if( possesSelfOnStart )
+            Posses( gameObject );
+    }
+
+    public void Posses( GameObject pawn )
+    {
+        movement = pawn.GetComponentInChildren<Movement>();
+        shooter = pawn.GetComponentInChildren<ProjectileShooter>();
+        dig = pawn.GetComponentInChildren<Dig>();
+        grab = pawn.GetComponentInChildren<Grab>();
     }
 
     public void OnMove(InputValue value)
@@ -30,6 +41,11 @@ public class HandleInput : MonoBehaviour
         float state = value.Get<float>();
         if( dig?.PerformAction( state ) == true )
             movement.SetAccelaration( 1 - state );
+    }
+
+    public void OnGrab()
+    {
+        grab.CheckGrab();
     }
 
 }
