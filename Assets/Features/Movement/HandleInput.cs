@@ -9,7 +9,7 @@ public class HandleInput : MonoBehaviour
     void Start()
     {
         TryGetComponent<Movement>( out movement );
-        TryGetComponent<ProjectileShooter>( out shooter );
+        shooter = GetComponentInChildren<ProjectileShooter>();
     }
 
     public void OnMove(InputValue value)
