@@ -3,11 +3,10 @@ using UnityEngine.InputSystem;
 
 public class HandleInput : MonoBehaviour
 {
-    [SerializeField]
-    private bool possesSelfOnStart = true;
+    public GameObject pawn;
 
     [SerializeField]
-    private GameObject pawn;
+    private bool possesSelfOnStart = true;
 
     private Movement movement;
     private ProjectileShooter shooter;
