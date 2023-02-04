@@ -24,6 +24,7 @@ public class TimeLoopController : MonoBehaviour
 
     public Action RoundEnd;
     public Action RoundStart;
+    public Action CountdownStart;
 
     // Update is called once per frame
     void Update()
@@ -94,7 +95,7 @@ public class TimeLoopController : MonoBehaviour
     {
         ResetTimers();
         CountDownActive = true;
-
+        CountdownStart?.Invoke();
         Debug.Log("Start countdown!");
         Debug.Log("3...");
     }
