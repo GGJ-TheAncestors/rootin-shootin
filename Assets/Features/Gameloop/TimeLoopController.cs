@@ -10,8 +10,6 @@ public class TimeLoopController : MonoBehaviour
     //
     public bool RoundActive { get; private set; } = false;
 
-    public int Players = 2; // TODO: Get an actual list of players
-
     // Keep track of the current round.
     [SerializeField]
     private int RoundDuration = 60;
@@ -25,6 +23,7 @@ public class TimeLoopController : MonoBehaviour
     public int CountDownTimeUI { get; private set; } = 3;
 
     public Action RoundEnd;
+    public Action RoundStart;
 
     // Update is called once per frame
     void Update()
@@ -67,6 +66,8 @@ public class TimeLoopController : MonoBehaviour
                 // Reset the countdown
                 CountDownTime = CountDownDuration;
                 CountDownActive = false;
+
+                RoundStart?.Invoke();
             }
         }
     }

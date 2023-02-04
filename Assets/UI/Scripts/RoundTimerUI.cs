@@ -8,4 +8,7 @@ public class RoundTimerUI : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
     [SerializeField] Slider timerSlider;
+    [SerializeField] TimeLoopController timeLoopController;
+
+
 }
