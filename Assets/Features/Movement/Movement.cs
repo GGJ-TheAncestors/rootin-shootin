@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
 
     private void CalculateNewVelocity()
     {
-        Vector2 steering = currentVelocity - targetVelocity;
+        Vector2 steering = targetVelocity - currentVelocity;
         steering *= acceleration;
         steering /= body.mass;
 
