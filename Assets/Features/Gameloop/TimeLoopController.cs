@@ -14,23 +14,14 @@ public class TimeLoopController : MonoBehaviour
     // Keep track of the current round.
     [SerializeField]
     private int RoundDuration = 60;
-    private float RoundTime = 0;
-    public int RoundTimeUI { get; private set; } = 0;
+    private float RoundTime = 60;
+    public int RoundTimeUI { get; private set; } = 60;
 
     // Countdown vars.
     private bool CountDownActive = false;
     private int CountDownDuration = 3;
     private float CountDownTime = 3; // Time to count down from
     public int CountDownTimeUI { get; private set; } = 3;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitializeTimers();
-
-        Debug.Log("Start countdown!");
-        Debug.Log("3...");
-    }
 
     // Update is called once per frame
     void Update()
@@ -76,16 +67,24 @@ public class TimeLoopController : MonoBehaviour
         }
     }
 
-    void InitializeTimers()
+    public void RestartTimers()
     {
         // Start the countdown to the first round.
         CountDownTime = CountDownDuration;
         CountDownTimeUI = CountDownDuration;
-        CountDownActive = true;
+        CountDownActive = false;
 
         RoundTime = RoundDuration;
         RoundTimeUI = RoundDuration;
         RoundActive = false;
+
+        Debug.Log("Start countdown!");
+        Debug.Log("3...");
     }
 
+    public void StartTimers()
+    {
+        RestartTimers();
+        CountDownActive = true;
+    }
 }
