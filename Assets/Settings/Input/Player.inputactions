@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Dig",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "7f370204-452b-42e2-aa20-80d94ddefa3c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

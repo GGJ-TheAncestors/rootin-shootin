@@ -5,11 +5,13 @@ public class HandleInput : MonoBehaviour
 {
     private Movement movement;
     private ProjectileShooter shooter;
+    private Dig dig;
 
     void Start()
     {
         TryGetComponent<Movement>( out movement );
         shooter = GetComponentInChildren<ProjectileShooter>();
+        dig = GetComponentInChildren<Dig>();
     }
 
     public void OnMove(InputValue value)
@@ -25,7 +27,9 @@ public class HandleInput : MonoBehaviour
 
     public void OnDig( InputValue value )
     {
-
+        float state = value.Get<float>();
+        if( dig?.PerformAction( state ) == true )
+            movement.SetAccelaration( 1 - state );
     }
 
 }

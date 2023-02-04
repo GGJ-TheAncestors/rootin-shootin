@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,8 +12,6 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private float acceleration;
-    [SerializeField]
-    private float stopDistance;
     [SerializeField]
     private Vector2 targetVelocity;
     [SerializeField]
@@ -33,7 +32,7 @@ public class Movement : MonoBehaviour
 
     public void SetTargetVelocity( Vector2 velocity )
     {
-        targetVelocity = velocity;
+        targetVelocity = velocity * maxSpeed;
     }
 
     private void CalculateNewVelocity()
@@ -47,7 +46,7 @@ public class Movement : MonoBehaviour
 
     private void UpdateVelocity()
     {
-        body.velocity = currentVelocity;
+        body.velocity = new Vector3(currentVelocity.x, body.velocity.y, currentVelocity.y);
     }
 
     private Vector2 Truncate(Vector2 vector, float maxLength)
@@ -58,5 +57,17 @@ public class Movement : MonoBehaviour
         }
 
         return vector;
+    }
+
+    public void SetAccelaration(float newAcceleration)
+    {
+        acceleration = newAcceleration;
+        if( newAcceleration == 0 )
+            Break();
+    }
+
+    public void Break()
+    {
+        currentVelocity *= 0.5f;
     }
 }
