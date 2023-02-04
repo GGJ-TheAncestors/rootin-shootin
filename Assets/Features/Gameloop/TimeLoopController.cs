@@ -74,7 +74,7 @@ public class TimeLoopController : MonoBehaviour
     /// <summary>
     /// Stops and restarts the timers.
     /// </summary>
-    public void RestartTimers()
+    public void ResetTimers()
     {
         // Start the countdown to the first round.
         CountDownTime = CountDownDuration;
@@ -84,9 +84,6 @@ public class TimeLoopController : MonoBehaviour
         RoundTime = RoundDuration;
         RoundTimeUI = RoundDuration;
         RoundActive = false;
-
-        Debug.Log("Start countdown!");
-        Debug.Log("3...");
     }
 
     /// <summary>
@@ -94,7 +91,10 @@ public class TimeLoopController : MonoBehaviour
     /// </summary>
     public void StartTimers()
     {
-        RestartTimers();
+        ResetTimers();
         CountDownActive = true;
+
+        Debug.Log("Start countdown!");
+        Debug.Log("3...");
     }
 }

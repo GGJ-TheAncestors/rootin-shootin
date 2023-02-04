@@ -7,43 +7,64 @@ public class GameLoopManager : MonoBehaviour
     // Starts a round by informing the timeloop controller, as well as the score manager & role manager.
     // 
     public TimeLoopController TimeLoop;
-    public ScoreManager Score;
-
+    public ScoreManager Scores;
+    public RoleManager Roles;
+    public int PlayerCount = 4; // TODO: temp var
     // ScoreManager;
     // RoleManager;
-    public int CurrentRound = 0;
+    private int CurrentRound = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         TimeLoop = GetComponentInChildren<TimeLoopController>();
-        Score = GetComponentInChildren<ScoreManager>();
-        TimeLoop.RoundEnd = delegate () { Debug.Log("The manager knows the round has ended!"); };
-        // TODO: If any logic is needed before the round starts, insert here!!
-        StartRound();
+        Scores = GetComponentInChildren<ScoreManager>();
+        Roles = GetComponentInChildren<RoleManager>();
+
+        TimeLoop.RoundEnd = RoundEnd;
+        StartGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    void RoundEnd()
     {
-
+        // TODO: Compare to the actual playercount.
+        if (CurrentRound == PlayerCount)
+        {
+            GameComplete();
+        }
+        else
+        {
+            NextRound();
+        }
     }
-
-    void StartRound()
+    void StartGame()
     {
+        // TODO: If any logic is needed before the first round starts, insert here!!
         Debug.Log("Round " + CurrentRound.ToString() + "!");
         TimeLoop.StartTimers();
     }
 
-    public void EndGame()
+    public void NextRound()
     {
-        // TODO: Go back to main menu?
+        // Add the remaining time as your score!
+        // TODO: Discuss with team.
+        Scores.AddScore(TimeLoop.RoundTimeUI, Roles.CurrentFarmerID);
+        TimeLoop.ResetTimers();
+        TimeLoop.StartTimers();
+        Roles.NextFarmer();
+        CurrentRound++;
+    }
+
+    public void GameComplete()
+    {
+        Debug.Log("Game Complete!");
+        // TODO: Show scores, Give option to restart or go back to main menu?
     }
 
     public void RestartGame()
     {
-        TimeLoop.RestartTimers();
-        Score.ResetScores();
-        
+        TimeLoop.ResetTimers();
+        Scores.ResetScores();
+        Roles.Reset();
     }
 }
