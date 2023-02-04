@@ -541,8 +541,8 @@ MonoBehaviour:
   - {fileID: 357196864}
   - {fileID: 128562100}
   m_Bounds:
-    m_Center: {x: -1.7193043, y: 0.057473123, z: -0.000000026265411}
-    m_Extent: {x: 0.88850516, y: 1.0225424, z: 0.000000072555885}
+    m_Center: {x: -1.7193043, y: 0.057473123, z: -0.00000002626539}
+    m_Extent: {x: 0.888505, y: 1.0225424, z: 0.00000007255588}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -899,6 +899,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.913
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769978944762882666, guid: 0ff5cf3ddbc737940ae164a5bcf8967f,
+        type: 3}
+      propertyPath: fireKey
+      value: 261
       objectReference: {fileID: 0}
     - target: {fileID: 8519866137217065697, guid: 0ff5cf3ddbc737940ae164a5bcf8967f,
         type: 3}
