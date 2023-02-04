@@ -12,6 +12,12 @@ public class GameLoopManager : MonoBehaviour
     [SerializeField] private CharacterManager Characters;
     [SerializeField] private ReferenceList Players;
 
+    public TimeLoopController GetTimeLoopController() => TimeLoop;
+    public ScoreManager GetScoreManager() => Scores;
+    public RoleManager GetRoleManager() => Roles;
+    public CharacterManager GetCharacters() => Characters;
+    public ReferenceList GetPlayers() => Players;
+
     // ScoreManager;
     // RoleManager;
     private int CurrentRound = 1;
