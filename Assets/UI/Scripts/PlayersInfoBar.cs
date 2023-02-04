@@ -6,13 +6,20 @@ using System.Linq;
 public class PlayersInfoBar : MonoBehaviour
 {
     [SerializeField] PlayerInfoPanel playerInfoPanelPrefab;
+    [SerializeField] RoleManager roleManager;
+
 
     private List<PlayerInfoPanel> playerInfoPanels = new List<PlayerInfoPanel>();
 
-    public void AddPlayer(Health health, ProjectileShooter projectileShooter)
+    private void OnEnable()
+    {
+        roleManager.OnRolesInitialized += HandleRolesInitialized;
+    }
+
+
+    public void AddPlayer()
     {
         var newPlayerInfoPanel = Instantiate(playerInfoPanelPrefab, transform);
-        newPlayerInfoPanel.Initialize(health, projectileShooter);
         playerInfoPanels.Add(newPlayerInfoPanel);
     }
 
@@ -22,6 +29,13 @@ public class PlayersInfoBar : MonoBehaviour
 
         playerInfoPanels.Remove(panelToRemove);
         Destroy(panelToRemove.gameObject);
+    }
 
+    void HandleRolesInitialized()
+    {
+        for(int i = 0; i < roleManager.PlayerRoles.Count; i++)
+        {
+            AddPlayer();
+        }
     }
 }
