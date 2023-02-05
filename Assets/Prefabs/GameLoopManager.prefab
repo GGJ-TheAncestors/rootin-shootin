@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoundDuration: 60
+  LastRoundTime: 0
 --- !u!1 &3023569379179906077
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScores: 00000000000000000000000000000000
+  Controllers: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
 --- !u!1 &3023569379681618112
 GameObject:
   m_ObjectHideFlags: 0
