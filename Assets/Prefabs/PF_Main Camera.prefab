@@ -132,8 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DampTime: 0.2
-  m_ScreenEdgeBuffer: 0
+  m_ScreenEdgeBuffer: -1
   m_MinSize: 8.5
+  extents: 1.5
   m_Targets: []
   controllers: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
   offset: {x: 0, y: 7, z: -8}

@@ -5,7 +5,8 @@ public class CameraControl : MonoBehaviour
 {
     public float m_DampTime = 0.2f;                 
     public float m_ScreenEdgeBuffer = 4f;           
-    public float m_MinSize = 6.5f;                  
+    public float m_MinSize = 6.5f;
+    public float extents = 1.5f;
     /*[HideInInspector]*/ public Transform[] m_Targets; 
     public ReferenceList controllers;
 
@@ -67,16 +68,18 @@ public class CameraControl : MonoBehaviour
         m_DesiredPosition = averagePos + offset;
     }
 
-
+    
     private void Zoom()
     {
-        float requiredSize = FindRequiredSize().x;        
-        float distance = requiredSize * 0.5f / Mathf.Tan(m_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        float lowest_y;
+        float requiredSize = FindRequiredSize(out float _).x + FindRequiredSize(out lowest_y).y;
+        float distance = requiredSize * 0.5f / Mathf.Tan(m_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad); // + Mathf.Max(0, (10 - FindRequiredSize().y));
         offset = Vector3.SmoothDamp( offset, offset.normalized * distance, ref m_ZoomSpeed, m_DampTime );
+        m_DesiredPosition.z = m_DesiredPosition.z - (Mathf.Max(0, lowest_y-offset.z));
     }
 
 
-    private Vector2 FindRequiredSize()
+    private Vector2 FindRequiredSize(out float lowest_y)
     {
         Vector3 desiredLocalPos = transform.InverseTransformPoint(m_DesiredPosition);
 
@@ -86,21 +89,29 @@ public class CameraControl : MonoBehaviour
         List<Transform> m_Targets = new List<Transform>(this.m_Targets);
         for( int i = 0; i < controllers.objects.Count; ++i )
         {
+            
             if( controllers.objects[i].TryGetComponent<HandleInput>( out HandleInput input ) )
             {
                 if( input.pawn != null )
                     m_Targets.Add( input.pawn.transform );
             }
-        } 
+        }
+        lowest_y = float.MaxValue;
 
         for (int i = 0; i < m_Targets.Count; i++)
         {
             if (!m_Targets[i].gameObject.activeSelf)
                 continue;
 
+
             Vector3 targetLocalPos = transform.InverseTransformPoint(m_Targets[i].position);
 
             Vector3 desiredPosToTarget = targetLocalPos - desiredLocalPos;
+
+            if (lowest_y > desiredPosToTarget.y)
+            {
+                lowest_y = desiredPosToTarget.y;
+            }
 
             sizeBounds.Encapsulate( desiredPosToTarget );
 
@@ -109,7 +120,7 @@ public class CameraControl : MonoBehaviour
         }
         
         sizeBounds.Expand( m_ScreenEdgeBuffer );
-        return sizeBounds.extents * 2;
+        return sizeBounds.extents * extents;
     }
 
 
@@ -119,6 +130,6 @@ public class CameraControl : MonoBehaviour
 
         transform.position = m_DesiredPosition;
 
-        m_Camera.orthographicSize = FindRequiredSize().x;
+        m_Camera.orthographicSize = FindRequiredSize(out float _).x;
     }
 }
