@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private ReferenceList Players;
 
+    public Action OnCharactersInstantiated;
+
+    public List<GameObject> GetPlayerCharacters() => PlayerCharacters;
+
     public void InstantiateCharacters()
     {
         for (int i = 0; i < Players.objects.Count; i++)
@@ -28,6 +33,8 @@ public class CharacterManager : MonoBehaviour
             HandleInput handleInput = Players.objects[i].GetComponent<HandleInput>();
             handleInput.Posses(PlayerCharacters[i]);
         }
+
+        OnCharactersInstantiated?.Invoke();
     }
 
     public void ClearCharacters()
