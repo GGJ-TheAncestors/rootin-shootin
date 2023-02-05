@@ -21,6 +21,7 @@ public class GameEndPanel : MonoBehaviour
     {
         ReturnToMenu.Enable();
         ReturnToMenu.performed += OnReturnToMenu;
+        SetScores();
     }
 
     void OnDisable()
