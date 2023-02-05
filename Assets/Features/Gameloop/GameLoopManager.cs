@@ -14,6 +14,7 @@ public class GameLoopManager : MonoBehaviour
     [SerializeField] private ReferenceList Players;
 
     [SerializeField] private GameObject tutorial;
+    [SerializeField] private GameObject NextRoundPanel;
 
     public TimeLoopController GetTimeLoopController() => TimeLoop;
     public ScoreManager GetScoreManager() => Scores;
@@ -53,7 +54,7 @@ public class GameLoopManager : MonoBehaviour
         }
         else
         {
-            NextRound();
+            NextRoundPanel.SetActive(true);
         }
     }
 
