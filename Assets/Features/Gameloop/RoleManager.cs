@@ -20,6 +20,7 @@ public class RoleManager : MonoBehaviour
     }
 
     public Action OnRolesInitialized;
+    public Action OnRolesRotated;
 
     public void InitializeRoles()
     {
@@ -41,6 +42,8 @@ public class RoleManager : MonoBehaviour
 
 
         CurrentFarmerID = CurrentFarmerID == Players.objects.Count ? 0 : CurrentFarmerID + 1;
+
+        OnRolesRotated?.Invoke();
     }
 
     public bool IsFarmer(int playerID)
