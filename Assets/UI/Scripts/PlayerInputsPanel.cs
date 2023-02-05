@@ -17,6 +17,8 @@ public class PlayerInputsPanel : MonoBehaviour
 
     [SerializeField] InputAction startAction;
 
+    [SerializeField] private GameObject readyButton;
+
     private new AudioSource audio;
 
     void Start()
@@ -46,6 +48,7 @@ public class PlayerInputsPanel : MonoBehaviour
 
     IEnumerator StartGameRoutine()
     {
+        readyButton.GetComponent<Animator>().SetTrigger("Pressed");
         audio.PlayOneShot( startGameSound );
         // AudioSource.PlayClipAtPoint(startGameSound, Vector3.zero);
         yield return new WaitForSeconds(startGameSound.length);
@@ -59,8 +62,11 @@ public class PlayerInputsPanel : MonoBehaviour
         //AudioSource.PlayClipAtPoint(controllerAddedSound, Vector3.zero);
         var newInput = newController.GetComponent<PlayerInput>();
         var newPlayerIndex = newInput.playerIndex;
-        playerEntryPanels[playerCount].SetPlayerInfo("Player " + newPlayerIndex);
+        playerEntryPanels[playerCount].SetPlayerInfo("P" + (newPlayerIndex + 1) );
         playerCount++;
+
+        if( playerCount >= 2 )
+            readyButton.SetActive( true );
     }
 
     public void TestObject(GameObject thing)
