@@ -30,12 +30,14 @@ public class Throw : MonoBehaviour
         {
             body.useGravity = false;
             body.position = new Vector3( body.position.x, 0, body.position.z );
-            enabled = false;
             body.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
 
         if( time <= -stunTime )
+        {
             movement.enabled = true;
+            enabled = false;
+        }
     }
     
     public void GO()
