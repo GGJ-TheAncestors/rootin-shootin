@@ -114,6 +114,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 424524430235916467}
+  - {fileID: 7428829061300370727}
   m_Father: {fileID: 572026497362536054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,6 +132,54 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7562548344622185156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7428829061300370727}
+  - component: {fileID: 1973420914708487215}
+  m_Layer: 0
+  m_Name: Grab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7428829061300370727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562548344622185156}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7498744644237242906}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973420914708487215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7562548344622185156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559d5ca6ac86e2346857ec05488d4744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  grabRange: 0.95
 --- !u!1001 &1838106162707844887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +348,10 @@ MonoBehaviour:
   CurrentCooldownTime: 0
   health: {fileID: 781536561829405007}
   HealingAmount: 5
+  DigSound: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
+  ResurfaceSound: {fileID: 8300000, guid: 698cc40829d49074a99c34371331f051, type: 3}
+  HealSound: {fileID: 8300000, guid: 83221d6c868a7654ca0035095d950a98, type: 3}
+  audioSource: {fileID: 6699943078071303833}
 --- !u!114 &781536561829405007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1394656335638441560, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
@@ -351,3 +404,9 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!82 &6699943078071303833 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5005954858129207694, guid: 8faca9ddff5b32742a1e364bf7ab3c04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1838106162707844887}
+  m_PrefabAsset: {fileID: 0}

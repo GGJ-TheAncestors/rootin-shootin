@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Player_Union
       objectReference: {fileID: 0}
+    - target: {fileID: 2089049468344255962, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_Name
+      value: Union
+      objectReference: {fileID: 0}
     - target: {fileID: 2628940692044710113, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
         type: 3}
       propertyPath: m_Sprite

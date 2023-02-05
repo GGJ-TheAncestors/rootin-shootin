@@ -18,10 +18,12 @@ public class Movement : MonoBehaviour
     private Vector2 currentVelocity;
 
     private Rigidbody body;
+    private Animator anim;
 
     void Start()
     {
         enabled = TryGetComponent<Rigidbody>(out body);
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -35,6 +37,8 @@ public class Movement : MonoBehaviour
         targetVelocity = velocity * maxSpeed;
     }
 
+    public Vector2 GetTargetVelocity() => targetVelocity;
+
     private void CalculateNewVelocity()
     {
         Vector2 steering = targetVelocity - currentVelocity;
@@ -46,9 +50,12 @@ public class Movement : MonoBehaviour
 
     private void UpdateVelocity()
     {
-        Vector3 forward = new Vector3(targetVelocity.x, 0, targetVelocity.y).normalized;
-        if( forward.sqrMagnitude > 0 )
-            transform.forward = forward;
+        // Vector3 forward = new Vector3(targetVelocity.x, 0, targetVelocity.y).normalized;
+        // if( forward.sqrMagnitude > 0 )
+        //     transform.forward = forward;
+
+        anim.SetFloat( "DirectionX", currentVelocity.x );
+        anim.SetFloat( "DirectionY", currentVelocity.y );
 
         body.velocity = new Vector3(currentVelocity.x, body.velocity.y, currentVelocity.y);
     }

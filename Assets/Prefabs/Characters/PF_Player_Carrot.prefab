@@ -65,7 +65,13 @@ PrefabInstance:
     - target: {fileID: 781536561829405006, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
         type: 3}
       propertyPath: m_Name
-      value: PF_Player_Veggies
+      value: PF_Player_Carrot
       objectReference: {fileID: 0}
+    - target: {fileID: 2628940692044710113, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1716017256, guid: 9a2f3f2ee12c38845bcf8f9a62756a64,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 603c8aecca8f16b43a13e9bb4c12fc89, type: 3}

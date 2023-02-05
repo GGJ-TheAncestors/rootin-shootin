@@ -56,7 +56,7 @@ public class HandleInput : MonoBehaviour
 
     public void OnGrab()
     {
-        grab.CheckGrab();
+        grab?.CheckGrab();
     }
 
 }

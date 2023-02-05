@@ -77,6 +77,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Player_Beet
       objectReference: {fileID: 0}
+    - target: {fileID: 1784671458285643319, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7278a43662570a346a1ea049a63821cd,
+        type: 2}
+    - target: {fileID: 2089049468344255962, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_Name
+      value: Beet
+      objectReference: {fileID: 0}
     - target: {fileID: 2089049468344255962, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
         type: 3}
       propertyPath: m_IsActive

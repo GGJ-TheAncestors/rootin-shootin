@@ -44,8 +44,8 @@ Camera:
   m_GameObject: {fileID: 1792492789894865462}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DampTime: 0.2
-  m_ScreenEdgeBuffer: 6
+  m_ScreenEdgeBuffer: 0
   m_MinSize: 8.5
   m_Targets: []
   controllers: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}

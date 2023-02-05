@@ -101,14 +101,17 @@ public class GameLoopManager : MonoBehaviour
         DeathCount = 0;
 
         foreach( GameObject player in Players.objects )
-            player.GetComponent<Health>().OnDeath += OnDeath;
+        {
+            if( player.TryGetComponent<Health>(out Health health ) )
+                health.OnDeath += OnDeath;
+        }
     }
 
     public void OnDeath()
     {
         ++DeathCount;
 
-        if( DeathCount == Players.Count() )
+        if( DeathCount == Players.Count() - 1 )
         {
             TimeLoop.ResetTimers();
             RoundEnd();

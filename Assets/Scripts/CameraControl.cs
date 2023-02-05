@@ -70,17 +70,18 @@ public class CameraControl : MonoBehaviour
 
     private void Zoom()
     {
-        float requiredSize = FindRequiredSize();        
+        float requiredSize = FindRequiredSize().x;        
         float distance = requiredSize * 0.5f / Mathf.Tan(m_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
         offset = Vector3.SmoothDamp( offset, offset.normalized * distance, ref m_ZoomSpeed, m_DampTime );
     }
 
 
-    private float FindRequiredSize()
+    private Vector2 FindRequiredSize()
     {
         Vector3 desiredLocalPos = transform.InverseTransformPoint(m_DesiredPosition);
 
         float size = 0f;
+        Bounds sizeBounds = new Bounds(Vector3.zero, Vector2.one * m_MinSize );
 
         List<Transform> m_Targets = new List<Transform>(this.m_Targets);
         for( int i = 0; i < controllers.objects.Count; ++i )
@@ -101,16 +102,14 @@ public class CameraControl : MonoBehaviour
 
             Vector3 desiredPosToTarget = targetLocalPos - desiredLocalPos;
 
-            size = Mathf.Max (size, Mathf.Abs (desiredPosToTarget.y));
+            sizeBounds.Encapsulate( desiredPosToTarget );
 
+            size = Mathf.Max (size, Mathf.Abs (desiredPosToTarget.y));
             size = Mathf.Max (size, Mathf.Abs (desiredPosToTarget.x) / m_Camera.aspect);
         }
         
-        size += m_ScreenEdgeBuffer;
-
-        size = Mathf.Max(size, m_MinSize);
-
-        return size;
+        sizeBounds.Expand( m_ScreenEdgeBuffer );
+        return sizeBounds.extents * 2;
     }
 
 
@@ -120,6 +119,6 @@ public class CameraControl : MonoBehaviour
 
         transform.position = m_DesiredPosition;
 
-        m_Camera.orthographicSize = FindRequiredSize();
+        m_Camera.orthographicSize = FindRequiredSize().x;
     }
 }
