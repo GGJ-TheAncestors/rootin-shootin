@@ -9,6 +9,9 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private float grabRange;
 
+    [SerializeField]
+    private FXObject fx;
+
     public void CheckGrab()
     {
         Collider[] colliders;
@@ -22,6 +25,7 @@ public class Grab : MonoBehaviour
 
     public void DoGrab( Collider collider )
     {
+        Instantiate( fx, transform.position, Quaternion.identity );
         collider.GetComponentInParent<Throw>()?.GO();
     }
 }

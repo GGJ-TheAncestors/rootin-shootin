@@ -180,6 +180,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   grabRange: 0.95
+  fx: {fileID: 3592992095471205352, guid: 5a319ee6d4e79d64199fb7e6127fbc74, type: 3}
 --- !u!1001 &1838106162707844887
 PrefabInstance:
   m_ObjectHideFlags: 0
