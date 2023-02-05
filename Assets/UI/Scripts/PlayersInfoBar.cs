@@ -15,18 +15,25 @@ public class PlayersInfoBar : MonoBehaviour
     private void OnEnable()
     {
         roleManager.OnRolesInitialized += HandleRolesInitialized;
+        roleManager.OnRolesRotated += HandleRolesRotated;
         scoreManager.ScoreAction += HandleScoreUpdate;
     }
 
     private void OnDisable()
     {
         roleManager.OnRolesInitialized -= HandleRolesInitialized;
+        roleManager.OnRolesRotated -= HandleRolesRotated;
+        scoreManager.ScoreAction -= HandleScoreUpdate;
+
+
     }
 
 
-    public void AddPlayer()
+    public void AddPlayer(int playerId, RoleManager.Characters role)
     {
         var newPlayerInfoPanel = Instantiate(playerInfoPanelPrefab, transform);
+        newPlayerInfoPanel.SetPlayerId(playerId);
+        newPlayerInfoPanel.SetRole(role);
         playerInfoPanels.Add(newPlayerInfoPanel);
     }
 
@@ -42,7 +49,15 @@ public class PlayersInfoBar : MonoBehaviour
     {
         for(int i = 0; i < roleManager.PlayerRoles.Count; i++)
         {
-            AddPlayer();
+            AddPlayer(i, roleManager.PlayerRoles[i]);
+        }
+    }
+
+    void HandleRolesRotated()
+    {
+        for(int i = 0; i < playerInfoPanels.Count; i++)
+        {
+            playerInfoPanels[i].SetRole(roleManager.PlayerRoles[i]);
         }
     }
 

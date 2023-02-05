@@ -15,6 +15,7 @@ public class TimeLoopController : MonoBehaviour
     private int RoundDuration = 60;
     private float RoundTime = 60;
     public int RoundTimeUI { get; private set; } = 60;
+    public int LastRoundTime = 0;
 
     // Countdown vars.
     private bool CountDownActive = false;
@@ -34,7 +35,7 @@ public class TimeLoopController : MonoBehaviour
         {
             RoundTime -= Time.deltaTime;
             RoundTimeUI = Mathf.CeilToInt(RoundTime);
-
+            LastRoundTime = RoundTimeUI;
             if (RoundTime <= 0)
             {
                 RoundActive = false;

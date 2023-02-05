@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int score, int playerID)
     {
-        playerScores[playerID] = score;
+        playerScores[playerID] += score;
         ScoreAction?.Invoke(score, playerID);
     }
 

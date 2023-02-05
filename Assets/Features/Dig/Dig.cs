@@ -60,6 +60,7 @@ public class Dig : MonoBehaviour
 
     public void ActionResurface()
     {
+        isDigging = false;
         animator.SetBool( "Action_Dig", false );
         audioSource.PlayOneShot( ResurfaceSound );
         CurrentCooldownTime = CooldownTime;
