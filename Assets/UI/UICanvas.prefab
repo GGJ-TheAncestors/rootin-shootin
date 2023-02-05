@@ -240,6 +240,7 @@ MonoBehaviour:
     type: 3}
   roleManager: {fileID: 0}
   scoreManager: {fileID: 0}
+  characterManager: {fileID: 0}
 --- !u!1001 &2034761128121237094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,11 +357,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameEndPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164944478843299688, guid: 4c9fd630884139844911f84b335600cb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5790564597909451995, guid: 4c9fd630884139844911f84b335600cb,
         type: 3}
