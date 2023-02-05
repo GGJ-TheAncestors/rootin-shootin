@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     // TODO: Probably should add the player ReferenceList here.
     [SerializeField]
     private List<int> playerScores = new List<int> { 0, 0, 0, 0 };
+    public ReferenceList Controllers;
 
     public Action<int, int> ScoreAction;
 
@@ -19,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int score, int playerID)
     {
         playerScores[playerID] += score;
-        ScoreAction?.Invoke(score, playerID);
+        ScoreAction?.Invoke(playerScores[playerID], playerID);
     }
 
     public void ResetScores() 
@@ -27,6 +28,12 @@ public class ScoreManager : MonoBehaviour
         for (int i = 0; i < playerScores.Count; i++)
         {
             playerScores[i] = 0;
+
+            // TODO: I know it's hacky, but this updates the UI to display the scores as 0.
+            if (i < Controllers.objects.Count)
+            {
+                ScoreAction?.Invoke(playerScores[i], i);
+            }
         }
     }
 

@@ -60,6 +60,7 @@ public class GameLoopManager : MonoBehaviour
         // TODO: If any logic is needed before the first round starts, insert here!!
         Debug.Log("Round " + CurrentRound.ToString() + "!");
         Roles.InitializeRoles();
+        Scores.ResetScores();
         Characters.InstantiateCharacters();
         TimeLoop.StartTimers();
         ResetDeath();
