@@ -701,7 +701,7 @@ PrefabInstance:
     - target: {fileID: 3023569379113917602, guid: a871ef32de23b804b909375039a7fa47,
         type: 3}
       propertyPath: RoundDuration
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3023569379113917603, guid: a871ef32de23b804b909375039a7fa47,
         type: 3}
