@@ -14,6 +14,8 @@ public class ScoreManager : MonoBehaviour
 
     public Action<int, int> ScoreAction;
 
+    public List<int> GetPlayerScores() => playerScores;
+
     public void AddScore(int score, int playerID)
     {
         playerScores[playerID] = score;

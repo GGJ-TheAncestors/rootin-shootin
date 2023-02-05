@@ -351,6 +351,7 @@ MonoBehaviour:
   DigSound: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
   ResurfaceSound: {fileID: 8300000, guid: 698cc40829d49074a99c34371331f051, type: 3}
   HealSound: {fileID: 8300000, guid: 83221d6c868a7654ca0035095d950a98, type: 3}
+  audioInterval: 0.2
   audioSource: {fileID: 6699943078071303833}
 --- !u!114 &781536561829405007 stripped
 MonoBehaviour:

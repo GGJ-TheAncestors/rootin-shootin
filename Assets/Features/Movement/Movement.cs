@@ -53,9 +53,11 @@ public class Movement : MonoBehaviour
         // Vector3 forward = new Vector3(targetVelocity.x, 0, targetVelocity.y).normalized;
         // if( forward.sqrMagnitude > 0 )
         //     transform.forward = forward;
-
-        anim.SetFloat( "DirectionX", currentVelocity.x );
-        anim.SetFloat( "DirectionY", currentVelocity.y );
+        if( currentVelocity.sqrMagnitude > 0 )
+        {
+            anim.SetFloat( "DirectionX", currentVelocity.x );
+            anim.SetFloat( "DirectionY", currentVelocity.y );
+        }
 
         body.velocity = new Vector3(currentVelocity.x, body.velocity.y, currentVelocity.y);
     }
