@@ -20,8 +20,24 @@ public class Dig : MonoBehaviour
     [SerializeField]
     private float HealingAmount;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip DigSound;
+    [SerializeField]
+    private AudioClip ResurfaceSound;
+    [SerializeField]
+    private AudioClip HealSound;
+
+    private float audioTimer;
+    [SerializeField]
+    private float audioInterval;
+
+    [SerializeField, HideInInspector]
+    private AudioSource audioSource;
+
     void OnValidate()
     {
+        audioSource = GetComponentInChildren<AudioSource>();
         health = GetComponent<Health>();
     }
 
@@ -31,18 +47,29 @@ public class Dig : MonoBehaviour
         CurrentCooldownTime = Mathf.Max( 0, CurrentCooldownTime );
         
         if( isDigging )
+        {
+            audioTimer -= Time.deltaTime;
+            if( audioTimer < 0 )
+            {
+                audioSource.PlayOneShot( HealSound );
+                audioTimer = audioInterval;
+            }
             health.DoHeal( HealingAmount );
+        }
     }
 
     public void ActionResurface()
     {
         animator.SetBool( "Action_Dig", false );
+        audioSource.PlayOneShot( ResurfaceSound );
         CurrentCooldownTime = CooldownTime;
     }
 
     public void ActionDig()
     {
         isDigging = true;
+        audioTimer = 0.75f;
+        audioSource.PlayOneShot( DigSound );
         animator.SetBool( "Action_Dig", true );
     }
 

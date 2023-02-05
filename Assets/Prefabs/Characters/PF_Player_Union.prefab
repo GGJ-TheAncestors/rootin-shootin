@@ -77,6 +77,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Player_Union
       objectReference: {fileID: 0}
+    - target: {fileID: 1784671458285643319, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 61b3fadea721ee94699eb7f826024184,
+        type: 2}
     - target: {fileID: 2089049468344255962, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
         type: 3}
       propertyPath: m_Name
@@ -88,5 +94,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 73848eb66a042624d8c15753fa1a6a40,
         type: 3}
+    - target: {fileID: 7428829061300370727, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428829061300370727, guid: 603c8aecca8f16b43a13e9bb4c12fc89,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 603c8aecca8f16b43a13e9bb4c12fc89, type: 3}
