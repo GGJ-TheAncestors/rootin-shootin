@@ -51,10 +51,10 @@ public class Dig : MonoBehaviour
             audioTimer -= Time.deltaTime;
             if( audioTimer < 0 )
             {
+                health.DoHeal(HealingAmount);
                 audioSource.PlayOneShot( HealSound );
                 audioTimer = audioInterval;
             }
-            health.DoHeal( HealingAmount );
         }
     }
 
