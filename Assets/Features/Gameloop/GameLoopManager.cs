@@ -13,6 +13,8 @@ public class GameLoopManager : MonoBehaviour
     [SerializeField] private CharacterManager Characters;
     [SerializeField] private ReferenceList Players;
 
+    [SerializeField] private GameObject tutorial;
+
     public TimeLoopController GetTimeLoopController() => TimeLoop;
     public ScoreManager GetScoreManager() => Scores;
     public RoleManager GetRoleManager() => Roles;
