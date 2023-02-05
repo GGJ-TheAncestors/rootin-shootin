@@ -18,7 +18,16 @@ public class PlayerInfoPanel : MonoBehaviour
     [SerializeField] Sprite onionBackgroundSprite;
 
 
-    public Health player {get; private set; }
+
+    public Health playerHealth {get; private set; }
+
+    private void Update()
+    {
+        if(playerHealth)
+        {
+            healthImage.fillAmount = playerHealth.GetCurrentHealth() / playerHealth.startHealth;
+        }
+    }
 
     public void SetScore(int score)
     {
@@ -38,6 +47,11 @@ public class PlayerInfoPanel : MonoBehaviour
     public void SetPlayerId(int playerId)
     {
         playerIdText.text = "" + (playerId + 1);
+    }
+
+    public void SetHealthComponent(Health playerHealth)
+    {
+        this.playerHealth = playerHealth;
     }
 
     public void SetRole(RoleManager.Characters role)

@@ -13,6 +13,9 @@ public class Health : MonoBehaviour
     private float currentHealth;
 
     public Action OnDeath;
+    public Action<float> OnHealthChange; //currentHealth 
+
+    public float GetCurrentHealth() => currentHealth;
 
     private void Awake()
     {
@@ -26,12 +29,14 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        OnHealthChange?.Invoke(currentHealth);
     }
 
     public void DoHeal(float heal)
     {
         currentHealth += heal;
         currentHealth = Mathf.Min( startHealth, currentHealth );
+        OnHealthChange?.Invoke(currentHealth);
     }
 
     public void Die()

@@ -8,48 +8,51 @@ public class PlayersInfoBar : MonoBehaviour
     [SerializeField] PlayerInfoPanel playerInfoPanelPrefab;
     [SerializeField] RoleManager roleManager;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] CharacterManager characterManager;
+   
 
 
     private List<PlayerInfoPanel> playerInfoPanels = new List<PlayerInfoPanel>();
 
     private void OnEnable()
     {
-        roleManager.OnRolesInitialized += HandleRolesInitialized;
         roleManager.OnRolesRotated += HandleRolesRotated;
         scoreManager.ScoreAction += HandleScoreUpdate;
+        characterManager.OnCharactersInstantiated += HandleCharactersInstantiated;
     }
 
     private void OnDisable()
     {
-        roleManager.OnRolesInitialized -= HandleRolesInitialized;
         roleManager.OnRolesRotated -= HandleRolesRotated;
         scoreManager.ScoreAction -= HandleScoreUpdate;
-
-
     }
 
-
-    public void AddPlayer(int playerId, RoleManager.Characters role)
+    public void AddPlayer(int playerId, RoleManager.Characters role, Health playerHealth)
     {
         var newPlayerInfoPanel = Instantiate(playerInfoPanelPrefab, transform);
         newPlayerInfoPanel.SetPlayerId(playerId);
         newPlayerInfoPanel.SetRole(role);
+        newPlayerInfoPanel.SetHealthComponent(playerHealth);
+        newPlayerInfoPanel.SetScore(scoreManager.GetPlayerScores()[playerId]);
         playerInfoPanels.Add(newPlayerInfoPanel);
     }
 
-    public void RemovePlayer(Health playerToRemove)
+    void HandleCharactersInstantiated()
     {
-        var panelToRemove = playerInfoPanels.First(x => playerToRemove == x.player);
+        //Destroy all current panels
+        foreach(var playerInfoPanel in playerInfoPanels)
+        {
+            playerInfoPanel.gameObject.SetActive(false);
+        }
+        playerInfoPanels.Clear();
 
-        playerInfoPanels.Remove(panelToRemove);
-        Destroy(panelToRemove.gameObject);
-    }
+        var playerCharacters = characterManager.GetPlayerCharacters();
 
-    void HandleRolesInitialized()
-    {
         for(int i = 0; i < roleManager.PlayerRoles.Count; i++)
         {
-            AddPlayer(i, roleManager.PlayerRoles[i]);
+            var currentPlayerHealth = playerCharacters[i].GetComponent<Health>();
+            print($"health is {currentPlayerHealth}");
+            AddPlayer(i, roleManager.PlayerRoles[i], currentPlayerHealth);
         }
     }
 
@@ -63,6 +66,9 @@ public class PlayersInfoBar : MonoBehaviour
 
     void HandleScoreUpdate(int score, int playerId)
     {
-        playerInfoPanels[playerId].SetScore(score);
+        if(playerInfoPanels.Count != 0)
+        {
+            playerInfoPanels[playerId].SetScore(score);
+        }
     }
 }

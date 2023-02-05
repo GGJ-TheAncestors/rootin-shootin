@@ -698,6 +698,11 @@ PrefabInstance:
       propertyPath: SpawnPositions.Array.data[3]
       value: 
       objectReference: {fileID: 1711819045}
+    - target: {fileID: 3023569379113917602, guid: a871ef32de23b804b909375039a7fa47,
+        type: 3}
+      propertyPath: RoundDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3023569379113917603, guid: a871ef32de23b804b909375039a7fa47,
         type: 3}
       propertyPath: m_IsActive
@@ -799,6 +804,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29c63a8762dd0664e9497f0718d5f2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1744423441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1267422929, guid: a871ef32de23b804b909375039a7fa47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1744423437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2717d28b2cbbf5f40bec55f5f5969228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2026007110
@@ -1135,6 +1152,10 @@ PrefabInstance:
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 1744423440}
+    - target: {fileID: 1900334765, guid: 71d1b6700d871ed4e96ca487ce7acbb0, type: 3}
+      propertyPath: characterManager
+      value: 
+      objectReference: {fileID: 1744423441}
     - target: {fileID: 647658074821234895, guid: 71d1b6700d871ed4e96ca487ce7acbb0,
         type: 3}
       propertyPath: m_Pivot.x
