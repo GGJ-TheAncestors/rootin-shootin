@@ -25,6 +25,8 @@ public class GameLoopManager : MonoBehaviour
     // RoleManager;
     private int CurrentRound = 1;
 
+    private int DeathCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class GameLoopManager : MonoBehaviour
         Roles.InitializeRoles();
         Characters.InstantiateCharacters();
         TimeLoop.StartTimers();
+        ResetDeath();
     }
 
     public void NextRound()
@@ -75,6 +78,7 @@ public class GameLoopManager : MonoBehaviour
         // Start the next round!
         TimeLoop.ResetTimers();
         TimeLoop.StartTimers();
+        ResetDeath();
         CurrentRound++;
     }
 
@@ -91,4 +95,24 @@ public class GameLoopManager : MonoBehaviour
         Scores.ResetScores();
         Roles.InitializeRoles();
     }
+
+    public void ResetDeath()
+    {
+        DeathCount = 0;
+
+        foreach( GameObject player in Players.objects )
+            player.GetComponent<Health>().OnDeath += OnDeath;
+    }
+
+    public void OnDeath()
+    {
+        ++DeathCount;
+
+        if( DeathCount == Players.Count() )
+        {
+            TimeLoop.ResetTimers();
+            RoundEnd();
+        }
+    }
+
 }

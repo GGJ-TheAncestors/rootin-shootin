@@ -669,18 +669,26 @@ MonoBehaviour:
   - {fileID: 3141945774874780054}
   - {fileID: 3141945776002012353}
   controllers: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
-  controllerAddedSound: {fileID: 8300000, guid: a22a1a02f78f2164aa5a37ccb699070a,
+  controllerAddedSound: {fileID: 8300000, guid: 35a25f3093f01404b9bed94a7f0b3c30,
     type: 3}
-  startGameSound: {fileID: 8300000, guid: 83221d6c868a7654ca0035095d950a98, type: 3}
+  startGameSound: {fileID: 8300000, guid: 76b7a08c3febefb44a8cfd1e241b7b81, type: 3}
   mainSceneName: MainScene
   startAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
+    m_Name: Start
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: fbe8d6ae-6dc5-4a3d-9664-852af0713d21
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 59168ffb-a303-4dc4-8377-00758cc60f0e
+      m_Path: <Gamepad>/start
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Start
+      m_Flags: 0
     m_Flags: 0
 --- !u!1 &3141945774987053754
 GameObject:

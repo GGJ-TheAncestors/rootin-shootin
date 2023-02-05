@@ -7,18 +7,16 @@ using UnityEngine.Events;
 public class ReferenceList : ScriptableObject
 {
     public List<GameObject> objects;
-
     public UnityEvent<GameObject> OnAdded;
 
-    public void Clear()
-    {
-        objects = new List<GameObject>();
-    }
+    public int Count() 
+        => objects.Count;
+
+    public void Clear() 
+        => objects = new List<GameObject>();
 
     public void ClearEvent()
-    {
-        OnAdded.RemoveAllListeners();
-    }
+        => OnAdded.RemoveAllListeners();
 
     public void Add( GameObject obj )
     {
@@ -30,8 +28,5 @@ public class ReferenceList : ScriptableObject
     }
 
     public void Remove( GameObject obj )
-    {
-        objects.Remove( obj );
-        
-    }
+        => objects.Remove( obj );
 }

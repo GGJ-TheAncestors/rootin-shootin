@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameEndPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private InputAction ReturnToMenu;
+
+    void OnEnable()
     {
-        
+        ReturnToMenu.Enable();
+        ReturnToMenu.performed += OnReturnToMenu;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        
+        ReturnToMenu.Disable();
+        ReturnToMenu.performed -= OnReturnToMenu;
+    }
+
+    private void OnReturnToMenu(InputAction.CallbackContext obj)
+    {
+        SceneManager.LoadScene(0);
     }
 }

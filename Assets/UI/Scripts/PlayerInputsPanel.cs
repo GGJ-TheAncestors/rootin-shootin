@@ -17,6 +17,13 @@ public class PlayerInputsPanel : MonoBehaviour
 
     [SerializeField] InputAction startAction;
 
+    private new AudioSource audio;
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
         controllers.OnAdded.AddListener(HandleControllerAdded);
@@ -33,12 +40,14 @@ public class PlayerInputsPanel : MonoBehaviour
 
     void HandleStartPerformed(InputAction.CallbackContext context)
     {
-        StartCoroutine(StartGameRoutine());
+        if( controllers.objects.Count >= 2 )
+            StartCoroutine(StartGameRoutine());
     }
 
     IEnumerator StartGameRoutine()
     {
-        AudioSource.PlayClipAtPoint(startGameSound, Vector3.zero);
+        audio.PlayOneShot( startGameSound );
+        // AudioSource.PlayClipAtPoint(startGameSound, Vector3.zero);
         yield return new WaitForSeconds(startGameSound.length);
         SceneManager.LoadScene(mainSceneName);
     }
@@ -46,7 +55,8 @@ public class PlayerInputsPanel : MonoBehaviour
     void HandleControllerAdded(GameObject newController)
     {
         print("controller added ");
-        AudioSource.PlayClipAtPoint(controllerAddedSound, Vector3.zero);
+        audio.PlayOneShot( controllerAddedSound );
+        //AudioSource.PlayClipAtPoint(controllerAddedSound, Vector3.zero);
         var newInput = newController.GetComponent<PlayerInput>();
         var newPlayerIndex = newInput.playerIndex;
         playerEntryPanels[playerCount].SetPlayerInfo("Player " + newPlayerIndex);

@@ -42,7 +42,7 @@ public class CameraControl : MonoBehaviour
         Vector3 averagePos = new Vector3();
         int numTargets = 0;
 
-        List<Transform> m_Targets = new List<Transform>(this.m_Targets.Length);
+        List<Transform> m_Targets = new List<Transform>(this.m_Targets);
         for( int i = 0; i < controllers.objects.Count; ++i )
         {
             if( controllers.objects[i].TryGetComponent<HandleInput>( out HandleInput input ) )
@@ -82,7 +82,7 @@ public class CameraControl : MonoBehaviour
 
         float size = 0f;
 
-        List<Transform> m_Targets = new List<Transform>(this.m_Targets.Length);
+        List<Transform> m_Targets = new List<Transform>(this.m_Targets);
         for( int i = 0; i < controllers.objects.Count; ++i )
         {
             if( controllers.objects[i].TryGetComponent<HandleInput>( out HandleInput input ) )
