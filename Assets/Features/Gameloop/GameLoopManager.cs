@@ -40,7 +40,9 @@ public class GameLoopManager : MonoBehaviour
 
     void RoundEnd()
     {
-        Debug.Log("Player 1 role was: " + Roles.PlayerRoles[0].ToString());
+        // Add the remaining time as your score!
+        // TODO: Discuss with team.
+        Scores.AddScore(TimeLoop.LastRoundTime, Roles.CurrentFarmerID);
 
         // TODO: Compare to the actual playercount.
         if (CurrentRound == Players.objects.Count)
@@ -65,10 +67,6 @@ public class GameLoopManager : MonoBehaviour
 
     public void NextRound()
     {
-        // Add the remaining time as your score!
-        // TODO: Discuss with team.
-        Scores.AddScore(TimeLoop.RoundTimeUI, Roles.CurrentFarmerID);
-
         // Assign new roles to players, then clear existing player gameobjects and reinstantiate them.
         //
         Roles.RotateCharacters();
@@ -102,16 +100,20 @@ public class GameLoopManager : MonoBehaviour
 
         foreach( GameObject player in Players.objects )
         {
-            if( player.TryGetComponent<Health>(out Health health ) )
+            HandleInput controller = player.GetComponent<HandleInput>();
+
+            if( controller.pawn.TryGetComponent<Health>(out Health health ) )
                 health.OnDeath += OnDeath;
         }
     }
 
     public void OnDeath()
     {
+        // Debug.Log("Character died! Deathcount: " + DeathCount.ToString() + " Playercount minus farmer: " + (Players.Count() - 1).ToString());
         ++DeathCount;
+        Scores.AddScore(25, Roles.CurrentFarmerID);
 
-        if( DeathCount == Players.Count() - 1 )
+        if ( DeathCount == Players.Count() - 1 )
         {
             TimeLoop.ResetTimers();
             RoundEnd();
