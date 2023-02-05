@@ -42,6 +42,9 @@ public class Throw : MonoBehaviour
     
     public void GO()
     {
+        if( enabled == true )
+            return;
+
         body.constraints = RigidbodyConstraints.FreezeRotation;
         
         enabled = true;

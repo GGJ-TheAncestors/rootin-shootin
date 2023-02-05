@@ -46,7 +46,18 @@ public class ProjectileShooter : MonoBehaviour
 
     public void Fire()
     {
-        var newProjectile = Instantiate(projectile, transform.position, transform.rotation, null);
+        Vector3 euler = transform.eulerAngles;
+
+        euler /= 90;
+        euler = new Vector3(
+            Mathf.RoundToInt( euler.x ),
+            Mathf.RoundToInt( euler.y ),
+            Mathf.RoundToInt( euler.z )
+        );
+        euler *= 90;
+        print( euler );
+
+        var newProjectile = Instantiate(projectile, transform.position, Quaternion.Euler( euler ), null);
         newProjectile.side = side;
         if(fireAudioClip)
         {

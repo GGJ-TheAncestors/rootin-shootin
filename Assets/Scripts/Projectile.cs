@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var otherHealth = other.GetComponent<Health>();
+        var otherHealth = other.GetComponentInParent<Health>();
 
         if(otherHealth)
         {
