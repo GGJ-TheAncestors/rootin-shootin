@@ -6,7 +6,7 @@ using System;
 
 public class RoleManager : MonoBehaviour
 {
-    readonly List<Characters> AllAvailableCharacters = new() { Characters.Farmer, Characters.Carrot, Characters.Beet, Characters.Onion };
+    readonly List<Characters> AllAvailableCharacters = new() { Characters.Farmer, Characters.Onion, Characters.Carrot, Characters.Beet };
 
     public int CurrentFarmerID { get; private set; } = 0;
     public List<Characters> PlayerRoles;

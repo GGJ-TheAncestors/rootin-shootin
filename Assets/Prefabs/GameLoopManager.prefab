@@ -92,9 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterPrefabs:
   - {fileID: 8519866137217065697, guid: 0ff5cf3ddbc737940ae164a5bcf8967f, type: 3}
-  - {fileID: 5414652431292732383, guid: ddba1046cdaa7514cb5bd60d0390e00a, type: 3}
   - {fileID: 375032770392114529, guid: 6d66c0bb7e742554d8b79880bdb88f61, type: 3}
   - {fileID: 5047689823904766170, guid: fb59f4b9fe5fc45489eddd95b8a06f3c, type: 3}
+  - {fileID: 5414652431292732383, guid: ddba1046cdaa7514cb5bd60d0390e00a, type: 3}
   PlayerCharacters: []
   SpawnPositions:
   - {fileID: 0}
