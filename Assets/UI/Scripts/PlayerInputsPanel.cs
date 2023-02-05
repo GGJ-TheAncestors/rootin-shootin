@@ -59,7 +59,7 @@ public class PlayerInputsPanel : MonoBehaviour
         //AudioSource.PlayClipAtPoint(controllerAddedSound, Vector3.zero);
         var newInput = newController.GetComponent<PlayerInput>();
         var newPlayerIndex = newInput.playerIndex;
-        playerEntryPanels[playerCount].SetPlayerInfo("Player " + newPlayerIndex);
+        playerEntryPanels[playerCount].SetPlayerInfo("Player " + (newPlayerIndex + 1));
         playerCount++;
     }
 

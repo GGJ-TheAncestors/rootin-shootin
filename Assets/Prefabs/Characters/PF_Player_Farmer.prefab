@@ -313,6 +313,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   grabRange: 0.95
+  fx: {fileID: 5751507257682798342, guid: 525e2d4019e752e4a9ed458e5c8afca8, type: 3}
 --- !u!1001 &7306656710545493176
 PrefabInstance:
   m_ObjectHideFlags: 0
