@@ -491,6 +491,96 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 767518499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315666398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 456137362, guid: 59a15051b79e8d048a133fc346ea54af,
+    type: 3}
+  m_PrefabInstance: {fileID: 767518499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315666397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699fe1b6521d4aa41b1c9f24ae6d8185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1315666399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2243609769204108383, guid: 59a15051b79e8d048a133fc346ea54af,
+    type: 3}
+  m_PrefabInstance: {fileID: 767518499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315666397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1558412293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558412295}
+  - component: {fileID: 1558412294}
+  m_Layer: 0
+  m_Name: DebugInputs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1558412294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558412293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c706cd24ae9495eb5e62c4dba56f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillControllerList: {fileID: 1315666398}
+  manager: {fileID: 1315666399}
+  playerPrefab: {fileID: 5362566730962675854, guid: dc70aa218c4a065489690848dead2f47,
+    type: 3}
+  controllerList: {fileID: 11400000, guid: 9713928110948214cb6b24d529d10df6, type: 2}
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 80e3906a-9fe1-437c-a832-11809fbda2d1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 42148af5-131a-4ace-a649-2f125418ed2e
+      m_Path: <Keyboard>/4
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 0
+    m_Flags: 0
+--- !u!4 &1558412295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558412293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 964, y: 413, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857762390
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +821,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3141945774951299796, guid: 59336eb2803f91240b9442b74803ee77,
+        type: 3}
+      propertyPath: startAction.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141945774951299796, guid: 59336eb2803f91240b9442b74803ee77,
+        type: 3}
+      propertyPath: startAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: e4175400-5118-4095-8517-ae50fa5089cd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141945774951299796, guid: 59336eb2803f91240b9442b74803ee77,
+        type: 3}
+      propertyPath: startAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/enter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141945774951299796, guid: 59336eb2803f91240b9442b74803ee77,
+        type: 3}
+      propertyPath: startAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Start
+      objectReference: {fileID: 0}
     - target: {fileID: 3141945774987053734, guid: 59336eb2803f91240b9442b74803ee77,
         type: 3}
       propertyPath: m_Pivot.x

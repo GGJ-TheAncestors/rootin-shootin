@@ -39,7 +39,7 @@ public class FillControllerList : MonoBehaviour
     }
 
 
-    void OnPlayerJoined( PlayerInput input )
+    public void OnPlayerJoined( PlayerInput input )
     {
         list.Add( input.gameObject );
     }

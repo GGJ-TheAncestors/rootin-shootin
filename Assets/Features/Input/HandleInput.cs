@@ -15,7 +15,7 @@ public class HandleInput : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad( this.gameObject );
+        DontDestroyOnLoad( this.gameObject );        
 
         if( possesSelfOnStart )
             Posses( gameObject );
@@ -32,6 +32,11 @@ public class HandleInput : MonoBehaviour
 
     public void Posses( GameObject pawn )
     {
+        PlayerInput input = GetComponent<PlayerInput>();
+        if( input.devices.Count == 1 && input.currentControlScheme.ToLower() != "controller" )
+            return; // do not posses invalid player setup
+
+
         this.pawn = pawn;
         Posses();
     }
